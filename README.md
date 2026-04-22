@@ -18,9 +18,11 @@ For a full overview of how Webflow Code Components work, see the [official quick
 
 ### 1. Prerequisites
 
-- Node.js (v18+)
+- Node.js v20+ and npm v10+
 - A Webflow account with access to the workspace
 - [Claude Code](https://claude.ai/code) installed (`npm install -g @anthropic-ai/claude-code`)
+
+The Webflow CLI (`@webflow/webflow-cli`) is already listed as a dev dependency — `npm install` in the next step will handle it.
 
 ### 2. Clone the repo
 
