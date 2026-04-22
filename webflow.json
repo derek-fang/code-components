@@ -1,0 +1,17 @@
+{
+  "library": {
+    "name": "Derek's Code Component Library",
+    "components": [
+      "./src/**/*.webflow.@(js|jsx|mjs|ts|tsx)"
+    ],
+    "description": "Derek's demo code component library",
+    "id": "dereks-code-component-library"
+  },
+  "telemetry": {
+    "global": {
+      "allowTelemetry": true,
+      "lastPrompted": 1776878046834,
+      "version": "1.15.0"
+    }
+  }
+}
