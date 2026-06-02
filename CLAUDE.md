@@ -101,12 +101,14 @@ The library is then available in any site in the workspace — users add it from
 
 Good demo components generally (a) exercise the Tripfold design system (theme tokens, fluid typography, component tokens), (b) show off something Webflow's native elements can't easily do, and (c) look polished on first glance. A few directions:
 
+> **Designer preview constraint:** The Webflow Designer renders components in a static iframe — scroll events and IntersectionObserver never fire there. **Prioritize components whose interactivity is triggered by user input (clicks, hovers, mouse movement) rather than scroll position.** Button-click triggers, hover effects, and mouse-tracking all work great in the Designer preview. Scroll-triggered animations (IntersectionObserver, scroll listeners) only work on the published site.
+
 **Interactive / motion**
 - **Tilt Card** — 3D mouse-tilt card with gradient bg and radial glare tracking the cursor. Good showcase of `useRef` + `useState` + mouse handlers.
 - **Marquee** — infinite scrolling logo/text strip with pause-on-hover. Shows CSS animation + React duplication pattern.
 - **Magnetic Button** — button that subtly follows the cursor when nearby. Uses `--_components---button--*` tokens for styling.
-- **Count-up Stat** — big H0-scale number that animates from 0 to target when it enters viewport (IntersectionObserver). Great showcase of fluid typography.
-- **Reveal on Scroll** — wrapper that fades/slides children in as they enter viewport.
+- **Count-up Stat** — big H0-scale number that animates from 0 to target when a button is clicked. Great showcase of fluid typography. *(Avoid IntersectionObserver trigger — won't fire in the Designer preview.)*
+- **Reveal on Scroll** — wrapper that fades/slides children in as they enter viewport. *(Scroll-triggered — only works on the published site, not in the Designer.)*
 
 **Content layout**
 - **Accordion / FAQ** — expandable Q&A rows, animated `max-height`. Uses H4 + paragraph-body + border tokens. Theme-mode aware.
@@ -128,6 +130,7 @@ Good demo components generally (a) exercise the Tripfold design system (theme to
 - **Keyboard Shortcut Display** — renders `<kbd>`-styled keys like `⌘` + `K`. Small but polished touch.
 
 **Guidelines when picking one**
+- **Prefer click/hover/mouse triggers over scroll triggers.** The Designer preview renders in a static iframe — `IntersectionObserver`, scroll listeners, and `window.scrollY` never fire. Components whose interactions are driven by user input (button clicks, hover, mouse movement) demo correctly in the Designer. Scroll-triggered effects only activate on the published site.
 - **Props must be flat primitives** (Text, Number, Variant, Boolean, Image, Link) — the Webflow Designer panel has no list/array prop. For N repeated items, expose a fixed number of slots (e.g. 4 Q/A pairs) and hide empties.
 - **Always use Theme tokens for color** so the component adapts to Invert/Accent/Rebrand modes automatically. See the Design System Reference below.
 - **Inline styles only.** No CSS imports, no Tailwind. `var(--token)` works fine inside the `style` object — the variables resolve from the host Webflow page at render time.
