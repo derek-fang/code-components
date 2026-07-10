@@ -96,6 +96,7 @@ The library is then available in any site in the workspace — users add it from
 ## Existing components
 
 - `Badge` (group: Info) — text + Light/Dark variant
+- `FlightCarbonMap` (group: Travel) — interactive SVG world map; airport dropdowns drive a live arc + 4 carbon stats (distance, CO₂ kg/t, trees to offset, Gold Standard offset cost). Props: Title, Subtitle, Default Origin, Default Destination (both Variant enums of 10 major airports).
 
 ## Component ideas worth building
 
